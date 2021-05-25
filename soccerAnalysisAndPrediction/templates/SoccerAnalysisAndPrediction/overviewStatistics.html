@@ -1,0 +1,68 @@
+<!-- extends -->
+{% extends 'base.html' %}
+<!-- /.extends -->
+
+<!-- load -->
+{% load static %}
+<!-- /.load -->
+
+<!-- block title -->
+{% block title %} Overview Statistics{% endblock %}
+<!-- /.title -->
+
+{% block content %}
+
+<!-- Main content -->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card card-primary card-outline">
+      <div class="card-header">
+        <h3 class="card-title">Data Collections</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+        </div>
+      </div>
+      <div class="card-body">xxxxxxxxxxxxx</div>
+    </div>
+    <!-- /.card -->
+
+    <div class="card card-primary card-outline">
+      <div class="card-header">
+        <h3 class="card-title">Data Collections</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+        </div>
+      </div>
+      <div class="card-body">
+        Datasets is collected and provided by
+        <b>
+          <a href="https://wyscout.com/">Wyscout</a>
+        </b>
+        , which have a proprietary software and expert video analysts, who are focused on data collection for football. They released free datasets on
+        <b>
+          <a href="https://figshare.com/collections/Soccer_match_event_dataset/4415000/5">figshare</a>
+        </b>
+        for people views and analysts. The datasets include five first division national scoccer competitions, which include Spanish, Italian, English, German and French, in season 2017/2018. Also, World cup 2018 and the European cup 2016 are provided.
+      </div>
+    </div>
+    <!-- /.card -->
+  </div>
+</div>
+<!-- /.row -->
+
+<!-- jQuery -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+
+<!-- Page script -->
+<script>
+  $(function () {
+    var data = "{{data}}".replaceAll("&quot;", '"');
+    // data = data.replace("&quot;", '"');
+    // &quot;
+
+    });
+  });
+</script>
+{% endblock %}

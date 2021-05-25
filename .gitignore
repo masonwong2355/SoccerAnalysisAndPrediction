@@ -131,3 +131,4 @@ dmypy.json
 # custome
 public-notebooks/data/
 static/data/Statsbomb/
+static/data/events

@@ -1,0 +1,301 @@
+<!-- extends -->
+{% extends 'base.html' %}
+<!-- /.extends -->
+
+<!-- load -->
+{% load static %}
+<!-- /.load -->
+
+<!-- block title -->
+{% block title %}Match Analysis{% endblock %}
+<!-- /.title -->
+
+{% block content %}
+
+<!-- Main content -->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card card-primary card-outline">
+      <div class="card-header">
+        <h3 class="card-title">{{ match.competition.competition_name }} {{ match.season.season_name }}</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+        </div>
+      </div>
+
+      <div class="card-body">
+        <div class="card text-center">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link active" id="info-tab" data-toggle="tab" href="#info" role="tab" aria-controls="info" aria-selected="true">Infomation</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="passNet-tab" data-toggle="tab" href="#passNet" role="tab" aria-controls="passNet" aria-selected="false">Pass Network</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="goal_action-tab" data-toggle="tab" href="#goal_action" role="tab" aria-controls="goal_action" aria-selected="false">Goal Actions</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="events-tab" data-toggle="tab" href="#events" role="tab" aria-controls="events" aria-selected="false">Events</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="heatmap-tab" data-toggle="tab" href="#heatmap" role="tab" aria-controls="heatmap" aria-selected="false">Heat Map</a>
+            </li>
+          </ul>
+          <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="info" role="tabpanel" aria-labelledby="info-tab">
+              <div class="row" style="padding: 3%">
+                <div class="col-5 text-left">
+                  <h1>{{ match.home_team.home_team_name }}</h1>
+                  <div>{{ match.home_team.managers.name }}</div>
+                  <div>Formation : {{ lineups.0.tactics.formation }}</div>
+                  {% for p in lineups.0.tactics.lineup %}
+                  <div class="row">
+                    <div class="col-2">{{ p.position.name }}</div>
+                    <div class="col-10"># {{ p.jersey_number }} {{ p.player.name }}</div>
+                  </div>
+                  {% endfor %}
+                </div>
+                <div class="col-2 text-center">
+                  <h1>{{ match.home_score }} : {{ match.away_score }}</h1>
+                  <div>{{ match.match_date }} {{ match.kick_off }}</div>
+                  <div>Week {{ match.match_week }} {{ match.competition_stage.name }}</div>
+                  <div>Stadium : {{ match.stadium.name }}</div>
+                  <div>Referee : {{ match.referee.name }}</div>
+                </div>
+                <div class="col-5 text-right">
+                  <h1>{{ match.away_team.away_team_name }}</h1>
+                  <div>{{ match.away_team.managers.name }}</div>
+
+                  <div>Formation : {{ lineups.1.tactics.formation }}</div>
+                  {% for p in lineups.1.tactics.lineup %}
+                  <div class="row">
+                    <div class="col-10"># {{ p.jersey_number }} {{ p.player.name }}</div>
+                    <div class="col-2">{{ p.position.name }}</div>
+                  </div>
+                  {% endfor %}
+                </div>
+                {% comment %} {{match}} {% endcomment %}
+              </div>
+            </div>
+            <div class="tab-pane fade" id="passNet" role="tabpanel" aria-labelledby="passNet-tab">
+              <div>{{ home_pass_network|safe }}</div>
+              <div>{{ away_pass_network|safe }}</div>
+              {% comment %} {{ plot_events|safe }} {{ heatmap|safe }} {% endcomment %}
+            </div>
+            <div class="tab-pane fade" id="goal_action" role="tabpanel" aria-labelledby="goal_action-tab">
+              {% for goal_action in goal_actions %}
+              <h3>Goal {{forloop.counter}}</h3>
+              <div>{{ goal_action|safe }}</div>
+              {% endfor %}
+            </div>
+            <div class="tab-pane fade" id="events" role="tabpanel" aria-labelledby="events-tab">
+              <h3>Player short</h3>
+              <div>{{ short_event|safe }}</div>
+              <h3>Player pass</h3>
+              <div class="row" style="padding: 3%">
+                <div class="col-5 text-left">
+                  <h1>{{ match.home_team.home_team_name }}</h1>
+                  <div>{{ match.home_team.managers.name }}</div>
+                  <form role="form" method="post" id="passEvent_home_form">
+                    {% csrf_token %}
+                    <input name="match_id" value="{{ match.match_id }}" style="visibility: hidden" type="input" />
+                    {% for p in lineups.0.tactics.lineup %}
+                    <div class="row">
+                      <div class="col-2">{{ p.position.name }}</div>
+                      <div class="col-10">
+                        <input class="form-check-input passEvent_home_player" type="checkbox" value="passEvent_home_{{ p.jersey_number }}" name="passEvent_home_{{ p.player.name }}" id="passEvent_home_{{ p.jersey_number }}" />
+                        <label class="form-check-label" for="passEvent_home_{{ p.jersey_number }}"> # {{ p.jersey_number }} {{ p.player.name }}</label>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </form>
+                </div>
+                <div class="col-7 text-center" id="passEvent_home"></div>
+              </div>
+              <div class="row" style="padding: 3%">
+                <div class="col-5 text-left">
+                  <h1>{{ match.away_team.away_team_name }}</h1>
+                  <div>{{ match.away_team.managers.name }}</div>
+
+                  <form role="form" method="post" id="passEvent_away_form">
+                    {% csrf_token %}
+                    <input name="match_id" value="{{ match.match_id }}" style="visibility: hidden" type="input" />
+                    {% for p in lineups.1.tactics.lineup %}
+                    <div class="row">
+                      <div class="col-2">{{ p.position.name }}</div>
+                      <div class="col-10">
+                        <input class="form-check-input passEvent_away_player" type="checkbox" value="passEvent_away_{{ p.jersey_number }}" name="passEvent_away_{{ p.player.name }}" id="passEvent_away_{{ p.jersey_number }}" />
+                        <label class="form-check-label" for="passEvent_away_{{ p.jersey_number }}"> # {{ p.jersey_number }} {{ p.player.name }}</label>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </form>
+                </div>
+                <div class="col-7 text-center" id="passEvent_away"></div>
+              </div>
+            </div>
+            <div class="tab-pane fade" id="heatmap" role="tabpanel" aria-labelledby="heatmap-tab">
+              <div class="row" style="padding: 3%">
+                <div class="col-5 text-left">
+                  <h1>{{ match.home_team.home_team_name }}</h1>
+                  <div>{{ match.home_team.managers.name }}</div>
+                  <form role="form" method="post" id="heatmap_home_form">
+                    {% csrf_token %}
+                    <input name="match_id" value="{{ match.match_id }}" style="visibility: hidden" type="input" />
+                    {% for p in lineups.0.tactics.lineup %}
+                    <div class="row">
+                      <div class="col-2">{{ p.position.name }}</div>
+                      <div class="col-10">
+                        <input class="form-check-input heatmap_home_player" type="checkbox" value="heatmap_home_{{ p.jersey_number }}" name="heatmap_home_{{ p.player.name }}" id="heatmap_home_{{ p.jersey_number }}" />
+                        <label class="form-check-label" for="heatmap_home_{{ p.jersey_number }}"> # {{ p.jersey_number }} {{ p.player.name }}</label>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </form>
+                </div>
+                <div class="col-7 text-center" id="heatmap_home">{{ heatmap|safe }}</div>
+              </div>
+              <div class="row" style="padding: 3%">
+                <div class="col-5 text-left">
+                  <h1>{{ match.away_team.away_team_name }}</h1>
+                  <div>{{ match.away_team.managers.name }}</div>
+
+                  <form role="form" method="post" id="heatmap_away_form">
+                    {% csrf_token %}
+                    <input name="match_id" value="{{ match.match_id }}" style="visibility: hidden" type="input" />
+                    {% for p in lineups.1.tactics.lineup %}
+                    <div class="row">
+                      <div class="col-2">{{ p.position.name }}</div>
+                      <div class="col-10">
+                        <input class="form-check-input heatmap_away_player" type="checkbox" value="heatmap_away_{{ p.jersey_number }}" name="heatmap_away_{{ p.player.name }}" id="heatmap_away_{{ p.jersey_number }}" />
+                        <label class="form-check-label" for="heatmap_away_{{ p.jersey_number }}"> # {{ p.jersey_number }} {{ p.player.name }}</label>
+                      </div>
+                    </div>
+                    {% endfor %}
+                  </form>
+                </div>
+                <div class="col-7 text-center" id="heatmap_away">{{ heatmap|safe }}</div>
+              </div>
+            </div>
+          </div>
+          <!-- /.card -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- /.row -->
+
+<!-- jQuery -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+
+<!-- Page script -->
+<script>
+  $(function () {
+    var data = "{{data}}".replaceAll("&quot;", '"');
+    // data = data.replace("&quot;", '"');
+    // &quot;
+
+    function getFormData($form) {
+      var unindexed_array = $form.serializeArray();
+      var indexed_array = {};
+
+      $.map(unindexed_array, function (n, i) {
+        indexed_array[n["name"]] = n["value"];
+      });
+
+      return indexed_array;
+    }
+
+    $(".heatmap_home_player").click(function () {
+      var url = document.location.href.split("/");
+      url = url.splice(0, url.length - 4).join("/") + "/heatmap/";
+
+      var players = getFormData($("#heatmap_home_form"));
+      console.log(url);
+      console.log(players);
+
+      $.ajax({
+        url: url,
+        type: "POST",
+        dataType: "json",
+        data: JSON.stringify(players),
+        beforeSend: function (xhr, settings) {
+          xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+        },
+        success: function (data) {
+          $("#heatmap_home").html(data["result"]);
+        },
+      });
+    });
+
+    $(".heatmap_away_player").click(function () {
+      var url = document.location.href.split("/");
+      url = url.splice(0, url.length - 4).join("/") + "/heatmap/";
+
+      var players = getFormData($("#heatmap_away_form"));
+      console.log(url);
+      console.log(players);
+
+      $.ajax({
+        url: url,
+        type: "POST",
+        dataType: "json",
+        data: JSON.stringify(players),
+        beforeSend: function (xhr, settings) {
+          xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+        },
+        success: function (data) {
+          $("#heatmap_away").html(data["result"]);
+        },
+      });
+    });
+
+    $(".passEvent_home_player").click(function () {
+      var url = document.location.href.split("/");
+      url = url.splice(0, url.length - 4).join("/") + "/passEvent/";
+
+      var players = getFormData($("#passEvent_home_form"));
+      console.log(url);
+      console.log(players);
+
+      $.ajax({
+        url: url,
+        type: "POST",
+        dataType: "json",
+        data: JSON.stringify(players),
+        beforeSend: function (xhr, settings) {
+          xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+        },
+        success: function (data) {
+          $("#passEvent_home").html(data["result"]);
+        },
+      });
+    });
+
+    $(".passEvent_away_player").click(function () {
+      var url = document.location.href.split("/");
+      url = url.splice(0, url.length - 4).join("/") + "/passEvent/";
+
+      var players = getFormData($("#passEvent_away_form"));
+      console.log(url);
+      console.log(players);
+
+      $.ajax({
+        url: url,
+        type: "POST",
+        dataType: "json",
+        data: JSON.stringify(players),
+        beforeSend: function (xhr, settings) {
+          xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+        },
+        success: function (data) {
+          $("#passEvent_away").html(data["result"]);
+        },
+      });
+    });
+  });
+</script>
+{% endblock %}

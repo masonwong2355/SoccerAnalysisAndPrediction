@@ -1,0 +1,559 @@
+<!-- extends -->
+{% extends 'base.html' %}
+<!-- /.extends -->
+
+<!-- load -->
+{% load static %}
+<!-- /.load -->
+
+<!-- block title -->
+{% block title %} Match Prediction (Premier League) {% endblock %}
+<!-- /.title -->
+
+{% block content %}
+<style>
+  .plf {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+  }
+  .selectWrapper {
+    border-radius: 50%;
+    display: inline-block;
+    overflow: hidden;
+    /* background: #cccccc; */
+    /* border: 1px solid #cccccc; */
+  }
+  .selectBox {
+    width: 80px;
+    height: 80px;
+    border: 0px;
+    outline: none;
+  }
+</style>
+
+<!-- Main content -->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card card-primary card-outline">
+      <div class="card-header">
+        <h3 class="card-title">Lineups Form</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+        </div>
+      </div>
+      <div class="card-body">
+        <form role="form">
+          <div class="row">
+            <div class="col">
+              <b>Home</b>
+              <img src="{% static 'dist/img/teamFlag/teamIcon.png' %}" alt="teamFlag" id="homeTeam_icon" width="120" height="120" /><img />
+              <select id="HomeTeamName" class="form-control select2 teamSelect" style="width: 100%" tag="home">
+                <option selected="selected" disabled>Select Home Team</option>
+              </select>
+            </div>
+            <div class="col text-end">
+              <b>Away</b>
+              <img src="{% static 'dist/img/teamFlag/teamIcon.png' %}" alt="teamFlag" id="awayTeam_icon" width="120" height="120" /><img />
+              <select id="AwayTeamName" class="form-control select2 teamSelect" style="width: 100%" tag="away">
+                <option selected="selected" disabled>Select Away Team</option>
+              </select>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <label for="exampleFormControlInput1" class="form-label">Formation</label>
+              <select id="HomeTeamFormation" class="form-control select2 FormationSelection" style="width: 100%" tag="home">
+                <option selected="selected" disabled>Select Home Team Formation</option>
+                {% comment %}
+                <option>4-4-2</option>
+                <option>3-4-3</option>
+                <option>4-3-3</option>
+                <option>4-1-4-1</option>
+                {% endcomment %}
+              </select>
+            </div>
+
+            <div class="col">
+              <label for="exampleFormControlInput1" class="form-label">Formation</label>
+              <select id="AwayTeamFormation" class="form-control select2 FormationSelection" style="width: 100%" tag="away">
+                <option selected="selected" disabled>Select Away Team Formation</option>
+              </select>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div class="card-body" style="position: relative; top: 0; left: 0">
+        {% comment %} {{data}} {% endcomment %}
+        <div class="row">
+          <img class="rounded mx-auto" src="{% static 'dist/img/footballFieldBackground.png' %}" alt="Football Field Background" style="position: relative; width: 100%" />
+          <div id="homefootballField"></div>
+          <div id="awayfootballField"></div>
+          <!-- <div style="position: absolute; top: calc(50% - 18px); right: calc(2% - 8px)">
+                <select class="form-control select2bs4 form-control-sm" style="width: 80%">
+                  <option selected="selected">Alabama</option>
+                  <option>Alaska</option>
+                  <option>California</option>
+                  <option>Delaware</option>
+                  <option>Washington</option>
+                </select>
+              </div> -->
+          <!-- GK -->
+          <!-- <div class="b" style="position: absolute; top: calc(50% - 18px); left: calc(2% - 8px); height: 10%; width: 10%">
+                <select class="form-control select2 form-control-sm" style="width: 80%">
+                  <option selected="selected">Alabama</option>
+                  <option>#33 Alaska</option>
+                  <option>#3 Alaska</option>
+                </select>
+              </div> -->
+          <!-- BD -->
+          <!-- <div class="b" style="position: absolute; top: calc(15%); left: calc(10%); height: 10%; width: 10%">
+                <select class="form-control select2 form-control-sm" style="width: 80%">
+                  <option selected="selected">Alabama</option>
+                  <option>#33 Alaska</option>
+                  <option>#3 Alaska</option>
+                </select>
+              </div>
+              <div class="b" style="position: absolute; top: calc(35%); left: calc(10%); height: 10%; width: 10%">
+                <select class="form-control select2 form-control-sm" style="width: 80%">
+                  <option selected="selected">Alabama</option>
+                  <option>#33 Alaska</option>
+                  <option>#3 Alaska</option>
+                </select>
+              </div>
+              <div class="b" style="position: absolute; top: calc(55%); left: calc(10%); height: 10%; width: 10%">
+                <select class="form-control select2 form-control-sm" style="width: 80%">
+                  <option selected="selected">Alabama</option>
+                  <option>#33 Alaska</option>
+                  <option>#3 Alaska</option>
+                </select>
+              </div>
+              <div class="b" style="position: absolute; top: calc(75%); left: calc(10%); height: 10%; width: 10%">
+                <select class="form-control select2 form-control-sm" style="width: 80%">
+                  <option selected="selected">Alabama</option>
+                  <option>#33 Alaska</option>
+                  <option>#3 Alaska</option>
+                </select>
+              </div> -->
+          <!-- CD -->
+          <!-- <div class="b" style="position: absolute; top: calc(35%); left: calc(20%); height: 10%; width: 10%">
+                <select class="form-control select2 form-control-sm" style="width: 80%">
+                  <option selected="selected">Alabama</option>
+                  <option>#33 Alaska</option>
+                  <option>#3 Alaska</option>
+                </select>
+              </div>
+              <div class="b" style="position: absolute; top: calc(55%); left: calc(20%); height: 10%; width: 10%">
+                <select class="form-control select2 form-control-sm" style="width: 80%">
+                  <option selected="selected">Alabama</option>
+                  <option>#33 Alaska</option>
+                  <option>#3 Alaska</option>
+                </select>
+              </div> -->
+          <!-- CF -->
+          <!-- <div class="b" style="position: absolute; top: calc(25%); left: calc(30%); height: 10%; width: 10%">
+                <select class="form-control select2 form-control-sm" style="width: 80%">
+                  <option selected="selected">Alabama</option>
+                  <option>#33 Alaska</option>
+                  <option>#3 Alaska</option>
+                </select>
+              </div>
+              <div class="b" style="position: absolute; top: calc(45%); left: calc(30%); height: 10%; width: 10%">
+                <select class="form-control select2 form-control-sm" style="width: 80%">
+                  <option selected="selected">Alabama</option>
+                  <option>#33 Alaska</option>
+                  <option>#3 Alaska</option>
+                </select>
+              </div>
+              <div class="b" style="position: absolute; top: calc(65%); left: calc(30%); height: 10%; width: 10%">
+                <select class="form-control select2 form-control-sm" style="width: 80%">
+                  <option selected="selected">Alabama</option>
+                  <option>#33 Alaska</option>
+                  <option>#3 Alaska</option>
+                </select>
+              </div> -->
+          <!-- FW -->
+          <!-- <div class="b" style="position: absolute; top: calc(45%); left: calc(40%); height: 10%; width: 10%">
+                <select class="form-control select2 form-control-sm" style="width: 80%">
+                  <option selected="selected">Alabama</option>
+                  <option>#33 Alaska</option>
+                  <option>#3 Alaska</option>
+                </select>
+              </div>
+               -->
+        </div>
+        <br />
+        <div class="row">
+          <button id="predictBut" type="button" class="btn btn-block btn-success">Predict Result</button>
+        </div>
+        <br />
+        <div class="row" id="predictResult"></div>
+      </div>
+    </div>
+    <!-- /.card -->
+  </div>
+</div>
+<!-- /.row -->
+
+<!-- jQuery -->
+<script src="{% static 'plugins/jquery/jquery.min.js' %}"></script>
+
+<!-- Page script -->
+<script>
+  $(function () {
+    var data = "{{data}}".replaceAll("&quot;", '"');
+    // data = data.replace("&quot;", '"');
+    // &quot;
+    data = JSON.parse(data);
+    console.log(typeof data);
+
+    var teams = {};
+    for (const [team, players] of Object.entries(data)) {
+      if (Object.keys(players["gk"]).length + Object.keys(players["other"]).length > 10) {
+        teams[team] = players;
+        $(".teamSelect").append("<option value='" + team + "'>" + team + "</option>");
+      }
+    }
+
+    // element init
+    $(".FormationSelection").each(function () {
+      var formationType = ["3-1-2-2-2", "3-1-4-1-1", "3-1-4-2", "3-2-2-1-2", "3-2-2-2-1", "3-2-3-1-1", "3-2-3-2", "3-3-2-1-1", "3-3-2-2", "3-4-1-2", "3-4-3", "3-5-1-1", "3-5-2", "4-1-2-3", "4-1-3-1-1", "4-1-3-2", "4-1-4-1", "4-2-2-1-1", "4-2-2-2", "4-2-3-1", "4-3-1-2", "4-3-2-1", "4-3-3", "4-4-1-1", "4-4-2", "4-5-1", "5-3-2", "5-4-1"];
+      var append = "";
+      formationType.forEach((val, ind) => {
+        append += "    <option>" + val + "</option>";
+      });
+      $(this).append(append);
+    });
+
+    // element change
+    $(".teamSelect").change(function () {
+      var tag = $(this).attr("tag");
+      var team = "{% static 'dist/img/teamFlag/teamIcon.png' %}";
+      team = team.replace("teamIcon", $(this).val());
+      $("#" + tag + "Team_icon").attr("src", team);
+    });
+
+    $(".FormationSelection").change(function () {
+      var isHome = $(this).attr("tag");
+      var tPosition = isHome == "home" ? "left" : "right";
+      var formation = $(this).val().split("-");
+      var teamPlayers = isHome == "home" ? data[$("#HomeTeamName").val()] : data[$("#AwayTeamName").val()];
+
+      var width = 10;
+      if (formation.length == 5) {
+        width = 8;
+      }
+      // console.log($("#HomeTeamName").val(), data);
+
+      var appendPos = "";
+      //   append GK
+      appendPos += '<div class="b" style="position: absolute; top: calc(50% - 18px); ' + tPosition + ": calc(2% - 8px); height: 10%; width: " + width + '%">';
+      appendPos += '  <select class="form-control select2 form-control-sm selected' + isHome + 'Player" pos="GK" style="width: 80%">';
+      appendPos += "    <option value='' disabled selected>Select..</option>";
+      //   loop GK here
+      for (const [key, player_id] of Object.entries(teamPlayers["gk"])) {
+        appendPos += "    <option value='" + player_id + "'>" + key + "</option>";
+      }
+      appendPos += "  </select>";
+      appendPos += "</div>";
+
+      var leftPos = 10;
+      var addleftPos = 10;
+      if (formation.length == 5) {
+        addleftPos = 8;
+      }
+      var topPos = {
+        5: [10, 25, 50, 65, 80],
+        4: [15, 35, 55, 75],
+        3: [25, 45, 65],
+        2: [35, 55],
+        1: [45],
+      };
+
+      var poss = {
+        10: {
+          5: {
+            10: "LM",
+            25: "LCM",
+            50: "CM",
+            65: "RCM",
+            80: "RM",
+          },
+          4: {
+            15: "LB",
+            35: "CB",
+            55: "CB",
+            75: "RB",
+          },
+          3: {
+            25: "LB",
+            45: "CB",
+            65: "RB",
+          },
+          2: {
+            35: "CB",
+            55: "CB",
+          },
+          1: {
+            45: "CB",
+          },
+        },
+        20: {
+          5: {
+            10: "LM",
+            25: "LCM",
+            50: "CM",
+            65: "RCM",
+            80: "RM",
+          },
+          4: {
+            15: "LM",
+            35: "CM",
+            55: "CM",
+            75: "RM",
+          },
+          3: {
+            25: "LM",
+            45: "CM",
+            65: "RM",
+          },
+          2: {
+            35: "CM",
+            55: "CM",
+          },
+          1: {
+            45: "CM",
+          },
+        },
+        30: {
+          5: {
+            10: "LM",
+            25: "LCM",
+            50: "CM",
+            65: "RCM",
+            80: "RM",
+          },
+          4: {
+            15: "LW",
+            35: "CF",
+            55: "CF",
+            75: "RW",
+          },
+          3: {
+            25: "LW",
+            45: "CF",
+            65: "RW",
+          },
+          2: {
+            35: "CF",
+            55: "CF",
+          },
+          1: {
+            45: "CF",
+          },
+        },
+        40: {
+          4: {
+            15: "LW",
+            35: "CF",
+            55: "CF",
+            75: "RW",
+          },
+          3: {
+            25: "LS",
+            45: "ST",
+            65: "RS",
+          },
+          2: {
+            35: "LS",
+            55: "RS",
+          },
+          1: {
+            45: "ST",
+          },
+        },
+        18: {
+          5: {
+            10: "LM",
+            25: "LCM",
+            50: "CM",
+            65: "RCM",
+            80: "RM",
+          },
+          4: {
+            15: "LM",
+            35: "CM",
+            55: "CM",
+            75: "RM",
+          },
+          3: {
+            25: "LM",
+            45: "CM",
+            65: "RM",
+          },
+          2: {
+            35: "CM",
+            55: "CM",
+          },
+          1: {
+            45: "CM",
+          },
+        },
+        26: {
+          5: {
+            10: "LM",
+            25: "LCM",
+            50: "CM",
+            65: "RCM",
+            80: "RM",
+          },
+          4: {
+            15: "LM",
+            35: "CM",
+            55: "CM",
+            75: "RM",
+          },
+          3: {
+            25: "LM",
+            45: "CM",
+            65: "RM",
+          },
+          2: {
+            35: "CM",
+            55: "CM",
+          },
+          1: {
+            45: "CM",
+          },
+        },
+        34: {
+          5: {
+            10: "LM",
+            25: "LCM",
+            50: "CM",
+            65: "RCM",
+            80: "RM",
+          },
+          4: {
+            15: "LM",
+            35: "CM",
+            55: "CM",
+            75: "RM",
+          },
+          3: {
+            25: "LM",
+            45: "CM",
+            65: "RM",
+          },
+          2: {
+            35: "CM",
+            55: "CM",
+          },
+          1: {
+            45: "CM",
+          },
+        },
+        42: {
+          5: {
+            10: "LM",
+            25: "LCM",
+            50: "CM",
+            65: "RCM",
+            80: "RM",
+          },
+          4: {
+            15: "LM",
+            35: "CM",
+            55: "CM",
+            75: "RM",
+          },
+          3: {
+            25: "LM",
+            45: "CM",
+            65: "RM",
+          },
+          2: {
+            35: "CM",
+            55: "CM",
+          },
+          1: {
+            45: "CM",
+          },
+        },
+      };
+
+      count = 2;
+      formation.forEach(function (item, index) {
+        var tpos = topPos[item];
+
+        tpos.forEach(function (val, ind) {
+          var pos = poss[leftPos][item][val];
+          // console.log(leftPos, item, val, pos);
+          appendPos += '<div class="b" style="position: absolute; top: calc(' + val + "%); " + tPosition + ": calc(" + leftPos + "%); height: 10%; width: " + width + '%">';
+          appendPos += '  <select class="form-control select2 form-control-sm selected' + isHome + 'Player" style="width: 80%" pos="' + pos + '">';
+          appendPos += "    <option value='' disabled selected>Select..</option>";
+          //   loop player
+          for (const [key, player_id] of Object.entries(teamPlayers["other"])) {
+            appendPos += "    <option value='" + player_id + "'>" + key + "</option>";
+          }
+          appendPos += "  </select>";
+          appendPos += "</div>";
+        });
+        leftPos += addleftPos;
+      });
+
+      if (isHome == "home") {
+        $("#homefootballField").html(appendPos);
+      } else {
+        $("#awayfootballField").html(appendPos);
+      }
+    });
+
+    $("#predictBut").click(function () {
+      var scripts = document.getElementsByTagName("script");
+      src = scripts[1].src;
+      url = document.location.href.split("/");
+      url = url.splice(0, url.length - 2).join("/") + "/predictResult/";
+      // console.log(url.length);
+      apiData = {};
+
+      homeTeam = [];
+      $("select.selectedhomePlayer").each(function () {
+        player = { player_id: $(this).val(), playerPos: $(this).attr("pos") };
+        homeTeam.push(player);
+      });
+
+      awayTeam = [];
+      $("select.selectedawayPlayer").each(function () {
+        player = { player_id: $(this).val(), playerPos: $(this).attr("pos") };
+        awayTeam.push(player);
+      });
+
+      apiData["home"] = $("#HomeTeamName").val();
+      apiData["homeFormatiom"] = $("#HomeTeamFormation").val();
+      apiData["homeTeam"] = homeTeam;
+      apiData["away"] = $("#AwayTeamName").val();
+      apiData["awayFormatiom"] = $("#AwayTeamFormation").val();
+      apiData["awayTeam"] = awayTeam;
+
+      console.log(apiData);
+
+      $.ajax({
+        url: url,
+        type: "POST",
+        dataType: "json",
+        data: JSON.stringify(apiData),
+        beforeSend: function (xhr, settings) {
+          xhr.setRequestHeader("X-CSRFToken", "{{ csrf_token }}");
+        },
+        success: function (data) {
+          console.log(data["result"]);
+          append = "<h1>Predict Result <b>" + data["result"] + "</b></h1>";
+          $("#predictResult").html(append);
+        },
+      });
+    });
+  });
+</script>
+{% endblock %}

@@ -1,0 +1,110 @@
+<!-- extends -->
+{% extends 'base.html' %}
+<!-- /.extends -->
+
+<!-- load -->
+{% load static %}
+<!-- /.load -->
+
+<!-- block title -->
+{% block title %}{{ competition.competition_name }} {{ competition.competition_gender }} {{ competition.season_name }} Matchs{% endblock %}
+<!-- /.title -->
+
+{% block layout %}
+<li class="breadcrumb-item"><a href="#">Home</a></li>
+<li class="breadcrumb-item"><a href="#">Analysis</a></li>
+<li class="breadcrumb-item active">Matchs</li>
+<li class="breadcrumb-item active">{{ competition.competition_name }}</li>
+<li class="breadcrumb-item active">{{ competition.competition_gender }} {{ competition.season_name }}</li>
+{% endblock %} {% block content %}
+
+<!-- AdminLTE for demo purposes -->
+{% comment %}
+<script src="{% static 'dist/js/demo.js' %}"></script>
+{% endcomment %}
+<!-- DataTables -->
+<link rel="stylesheet" href="{% static 'plugins/datatables-bs4/css/dataTables.bootstrap4.min.css' %}" />
+<link rel="stylesheet" href="{% static 'plugins/datatables-responsive/css/responsive.bootstrap4.min.css' %}" />
+
+<script src="{% static 'plugins/datatables/jquery.dataTables.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-bs4/js/dataTables.bootstrap4.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-responsive/js/dataTables.responsive.min.js' %}"></script>
+<script src="{% static 'plugins/datatables-responsive/js/responsive.bootstrap4.min.js' %}"></script>
+
+<!-- Main content -->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="card card-primary card-outline">
+      <div class="card-header">
+        <h3 class="card-title">Matchs</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+        </div>
+      </div>
+      <div class="card-body">
+        <table id="matchTable" class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>Match Date</th>
+              <th>Match</th>
+              <th>Match Week</th>
+              <th>Scors</th>
+              <th>Result</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for match in matchs %}
+            <tr>
+              <td>{{ match.match_date }} {{ match.kick_off }}</td>
+              <td>{{ match.home_team.home_team_name }} vs {{ match.away_team.away_team_name }}</td>
+              <td>{{ match.match_week }}</td>
+              <td>{{ match.home_score }} : {{ match.away_score }}</td>
+              {% if match.home_score > match.away_score %}
+              <td><b>Home</b></td>
+              {% elif match.home_score < match.away_score %}
+              <td><b>Away</b></td>
+              {% else %}
+              <td><b>Draw</b></td>
+              {% endif %}
+              <td>
+                <a href="{% url 'matchAnalysis' competition_id=competition_id season_id=season_id  match_id=match.match_id %}" class="dropdown-item"><i class="fas fa-search"></i></a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+          <tfoot>
+            <tr>
+              <th>Match Date</th>
+              <th>Match</th>
+              <th>Match Week</th>
+              <th>Scors</th>
+              <th>Result</th>
+              <th></th>
+            </tr>
+          </tfoot>
+        </table>
+      </div>
+    </div>
+    <!-- /.card -->
+  </div>
+</div>
+<!-- /.row -->
+
+<!-- Page script -->
+<script>
+  $(function () {
+    $("#matchTable").DataTable({
+      paging: true,
+      lengthChange: false,
+      searching: false,
+      ordering: true,
+      info: true,
+      autoWidth: false,
+      responsive: true,
+    });
+  });
+</script>
+
+{% endblock %}
