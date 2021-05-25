@@ -64,7 +64,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <li class="nav-item dropdown">
                 <a id="dropdownSubMenu1" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="nav-link dropdown-toggle">Analysis</a>
                 <ul aria-labelledby="dropdownSubMenu1" class="dropdown-menu border-0 shadow">
-                  <li><a href="{% url 'overviewStatistics' %}" class="dropdown-item">Overview Statistics</a></li>
+                  <li><a href="{% url 'index' %}" class="dropdown-item">Overview Statistics</a></li>
 
                   <li class="dropdown-divider"></li>
 
@@ -72,30 +72,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   <li class="dropdown-submenu dropdown-hover">
                     <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Matchs</a>
                     <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
-                      {% comment %}
-                      <li>
-                        <a tabindex="-1" href="{% url 'matchsCompetitions' competitions='europeanChampionship' %}" class="dropdown-item">European Championship</a>
-                      </li>
-                      <li>
-                        <a tabindex="-1" href="{% url 'matchsCompetitions' competitions='worldCup' %}" class="dropdown-item">World Cup</a>
-                      </li>
-                      <li>
-                        <a tabindex="-1" href="{% url 'matchsCompetitions' competitions='italian' %}" class="dropdown-item">Italian</a>
-                      </li>
-                      <li>
-                        <a tabindex="-1" href="{% url 'matchsCompetitions' competitions='english' %}" class="dropdown-item">English</a>
-                      </li>
-                      <li>
-                        <a tabindex="-1" href="{% url 'matchsCompetitions' competitions='spanish' %}" class="dropdown-item">Spanish</a>
-                      </li>
-                      <li>
-                        <a tabindex="-1" href="{% url 'matchsCompetitions' competitions='french' %}" class="dropdown-item">French</a>
-                      </li>
-                      <li>
-                        <a tabindex="-1" href="{% url 'matchsCompetitions' competition_id=49 season_id=3 %}" class="dropdown-item">USA NWSL</a>
-                      </li>
-                      {% endcomment %}
-
                       <!-- Level three dropdown-->
 
                       <li class="dropdown-submenu">
@@ -161,39 +137,18 @@ scratch. This page gets rid of all links and provides the needed markup only.
                     </ul>
                   </li>
                   <!-- End Level two -->
-
-                  <!-- Level two dropdown-->
-                  <li class="dropdown-submenu dropdown-hover">
-                    <a id="dropdownSubMenu2" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">Players</a>
-                    <ul aria-labelledby="dropdownSubMenu2" class="dropdown-menu border-0 shadow">
-                      <li>
-                        <a tabindex="-1" href="#" class="dropdown-item">level 2</a>
-                      </li>
-
-                      <!-- Level three dropdown-->
-                      <li class="dropdown-submenu">
-                        <a id="dropdownSubMenu3" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="dropdown-item dropdown-toggle">level 2</a>
-                        <ul aria-labelledby="dropdownSubMenu3" class="dropdown-menu border-0 shadow">
-                          <li><a href="#" class="dropdown-item">3rd level</a></li>
-                          <li><a href="#" class="dropdown-item">3rd level</a></li>
-                        </ul>
-                      </li>
-                      <!-- End Level three -->
-
-                      <li><a href="#" class="dropdown-item">level 2</a></li>
-                      <li><a href="#" class="dropdown-item">level 2</a></li>
-                    </ul>
-                  </li>
-                  <!-- End Level two -->
                 </ul>
               </li>
 
               <li class="nav-item">
                 <a href="{% url 'prediction' %}" class="nav-link">Prediction</a>
               </li>
+
+              {% comment %}
               <li class="nav-item">
                 <a href="{% url 'uploadPlayer' %}" class="nav-link">Import Data </a>
               </li>
+              {% endcomment %}
             </ul>
 
             <!-- SEARCH FORM -->

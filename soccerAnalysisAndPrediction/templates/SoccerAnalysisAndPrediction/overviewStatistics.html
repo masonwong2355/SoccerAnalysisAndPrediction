@@ -23,18 +23,6 @@
           <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
         </div>
       </div>
-      <div class="card-body">xxxxxxxxxxxxx</div>
-    </div>
-    <!-- /.card -->
-
-    <div class="card card-primary card-outline">
-      <div class="card-header">
-        <h3 class="card-title">Data Collections</h3>
-        <div class="card-tools">
-          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
-          <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
-        </div>
-      </div>
       <div class="card-body">
         Datasets is collected and provided by
         <b>
@@ -45,6 +33,234 @@
           <a href="https://figshare.com/collections/Soccer_match_event_dataset/4415000/5">figshare</a>
         </b>
         for people views and analysts. The datasets include five first division national scoccer competitions, which include Spanish, Italian, English, German and French, in season 2017/2018. Also, World cup 2018 and the European cup 2016 are provided.
+      </div>
+    </div>
+    <!-- /.card -->
+
+    <div class="card card-primary card-outline">
+      <div class="card-header">
+        <h3 class="card-title">Basic Statistics</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="row"><h5>Player</h5></div>
+          <hr style="height: 2px; border-width: 0; color: gray; background-color: gray" />
+
+          <div class="row">
+            <div class="col-6">
+              <figure class="figure">
+                <img src="{% static 'img/playerHeight.jpg' %}" class="figure-img img-fluid rounded" alt="playerHeight" />
+                <figcaption class="figure-caption">Most of the player height are between 180-185 cm.</figcaption>
+              </figure>
+            </div>
+            <div class="col-6">
+              <figure class="figure">
+                <img src="{% static 'img/playerWeight.jpg' %}" class="figure-img img-fluid rounded" alt="playerWeight" />
+                <figcaption class="figure-caption">Most of the player weight are between 70-80 kg</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <!-- /.Player -->
+
+        <div>
+          <div class="row">
+            <h5>Match Events</h5>
+          </div>
+          <hr style="height: 2px; border-width: 0; color: gray; background-color: gray" />
+
+          <div class="row">
+            <div class="col-6">
+              <figure class="figure">
+                <img src="{% static 'img/frequencyOfEvents.jpg' %}" class="figure-img img-fluid rounded" alt="playerHeight" />
+                <figcaption class="figure-caption">Pass events frequency occupy 50% in a match, and the second frequently event is player Duel.</figcaption>
+              </figure>
+            </div>
+            <div class="col-6">
+              <figure class="figure">
+                <img src="{% static 'img/distributionOfEvents.jpg' %}" class="figure-img img-fluid rounded" alt="playerWeight" />
+                <figcaption class="figure-caption">Aaverage 1703 events in a match and the standard deviation are 98%.</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <!-- /.Match Events -->
+
+        <div>
+          <div class="row">
+            <h5>Spatial distribution of events</h5>
+          </div>
+          <hr style="height: 2px; border-width: 0; color: gray; background-color: gray" />
+
+          <div class="row">
+            <div class="col-6">
+              <figure class="figure">
+                <img src="{% static 'img/spatialDistributionOfDuel.jpg' %}" class="figure-img img-fluid rounded" alt="playerHeight" />
+                <figcaption class="figure-caption"></figcaption>
+              </figure>
+            </div>
+            <div class="col-6">
+              <figure class="figure">
+                <img src="{% static 'img/spatialDistributionOfFoul.jpg' %}" class="figure-img img-fluid rounded" alt="playerWeight" />
+                <figcaption class="figure-caption"></figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <figure class="figure">
+                <img src="{% static 'img/spatialDistributionOfOffside.jpg' %}" class="figure-img img-fluid rounded" alt="playerHeight" />
+                <figcaption class="figure-caption"></figcaption>
+              </figure>
+            </div>
+            <div class="col-6">
+              <figure class="figure">
+                <img src="{% static 'img/spatialDistributionOfShot.jpg' %}" class="figure-img img-fluid rounded" alt="playerWeight" />
+                <figcaption class="figure-caption"></figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <!-- /.Spatial distribution of events -->
+
+        <div>
+          <div class="row">
+            <h5>Intra-match evolution of the events</h5>
+          </div>
+          <hr style="height: 2px; border-width: 0; color: gray; background-color: gray" />
+
+          <div class="row">
+            <div class="col-6">
+              <figure class="figure">
+                <img src="{% static 'img/evolutionOfGoal.jpg' %}" class="figure-img img-fluid rounded" alt="playerHeight" />
+                <figcaption class="figure-caption">Second half time goal events happened frequency more than first half.</figcaption>
+              </figure>
+            </div>
+            <div class="col-6"></div>
+          </div>
+          <div class="row">
+            <div class="col-6">
+              <figure class="figure">
+                <img src="{% static 'img/evolutionOfYellow Card.jpg' %}" class="figure-img img-fluid rounded" alt="playerHeight" />
+                <figcaption class="figure-caption">Player get card in second half is more than first half.</figcaption>
+              </figure>
+            </div>
+            <div class="col-6">
+              <figure class="figure">
+                <img src="{% static 'img/evolutionOfRed Card.jpg' %}" class="figure-img img-fluid rounded" alt="playerWeight" />
+                <figcaption class="figure-caption"></figcaption>
+              </figure>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-12">We can make conclusion with that player would like work hard in second half.</div>
+          </div>
+        </div>
+        <!-- /.Intra-match evolution of the events -->
+      </div>
+    </div>
+    <!-- /.card -->
+
+    <div class="card card-primary card-outline">
+      <div class="card-header">
+        <h3 class="card-title">Advance Statistics</h3>
+        <div class="card-tools">
+          <button type="button" class="btn btn-tool" data-card-widget="collapse"><i class="fas fa-minus"></i></button>
+          <button type="button" class="btn btn-tool" data-card-widget="remove"><i class="fas fa-times"></i></button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div>
+          <div class="row"><h5>Decision Tree</h5></div>
+          <hr style="height: 2px; border-width: 0; color: gray; background-color: gray" />
+
+          <div class="row">
+            <div class="col-12">
+              <figure class="figure">
+                <img src="{% static 'img/tree.jpg' %}" class="figure-img img-fluid rounded" alt="playerHeight" />
+                <figcaption class="figure-caption">Download pdf version <a href="{% static 'img/tree.jpg' %}" download>here</a></figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <!-- /.Decision Tree -->
+
+        <div>
+          <div class="row"><h5>Pass and Shot Analysis</h5></div>
+          <hr style="height: 2px; border-width: 0; color: gray; background-color: gray" />
+
+          <div class="row">
+            <div class="col-6">
+              <figure class="figure">
+                <img src="{% static 'img/ShotsPassesWithFit_Barcelona.jpg' %}" class="figure-img img-fluid rounded" alt="playerHeight" />
+                <figcaption class="figure-caption">Barcelona shots and passes relationship.</figcaption>
+              </figure>
+            </div>
+            <div class="col-6">
+              <figure class="figure">
+                <img src="{% static 'img/ShotsPassesWithFit_Real Madrid.jpg' %}" class="figure-img img-fluid rounded" alt="playerWeight" />
+                <figcaption class="figure-caption">Real Madrid shots and passes relationship.</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <figure class="figure">
+                <img src="{% static 'img/ShotsPassesWithFit_Eibar.jpg' %}" class="figure-img img-fluid rounded" alt="playerHeight" />
+                <figcaption class="figure-caption">Eibar shots and passes relationship.</figcaption>
+              </figure>
+            </div>
+            <div class="col-6">
+              <figure class="figure">
+                <img src="{% static 'img/ShotsPassesWithFit_Real Sociedad.jpg' %}" class="figure-img img-fluid rounded" alt="playerWeight" />
+                <figcaption class="figure-caption">Real Sociedad shots and passes relationship.</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-12">Compares the team find that the team pass and have more short chance, they are general get the top position in league ranking</div>
+          </div>
+
+          <div class="row"><h5>Team passes of pitch</h5></div>
+          <hr style="height: 2px; border-width: 0; color: gray; background-color: gray" />
+
+          <div class="row">
+            <div class="col-6">
+              <figure class="figure">
+                <img src="{% static 'img/PassHeatBarcelona.jpg' %}" class="figure-img img-fluid rounded" alt="playerHeight" />
+                <figcaption class="figure-caption">Barcelona focus attack center position</figcaption>
+              </figure>
+            </div>
+            <div class="col-6">
+              <figure class="figure">
+                <img src="{% static 'img/PassHeatReal Madrid.jpg' %}" class="figure-img img-fluid rounded" alt="playerWeight" />
+                <figcaption class="figure-caption">Real Madrid very high frequency pass and attack left ring side</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-6">
+              <figure class="figure">
+                <img src="{% static 'img/PassHeatEibar.jpg' %}" class="figure-img img-fluid rounded" alt="playerHeight" />
+                <figcaption class="figure-caption"></figcaption>
+              </figure>
+            </div>
+            <div class="col-6">
+              <figure class="figure">
+                <img src="{% static 'img/PassHeatReal Sociedad.jpg' %}" class="figure-img img-fluid rounded" alt="playerWeight" />
+                <figcaption class="figure-caption"></figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+        <!-- /.Decision Tree -->
       </div>
     </div>
     <!-- /.card -->
