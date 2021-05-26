@@ -5,6 +5,11 @@ Data analysis of competition includes basic statistic, which are player, match e
 
 User can input formation and lineups of team as feature into neural network model to predict home team is win, draw or lose of match.
 
+## Analysis features
+### 
+<img alt="Layered API" src="static/img/frequencyOfEvents.jpg" width="345" style="max-width: 345px">
+
+
 ## Setup
 ### 1. Install Requirements
 run `pip install -r requirements.txt` to install require library 
