@@ -6,9 +6,20 @@ Data analysis of competition includes basic statistic, which are player, match e
 User can input formation and lineups of team as feature into neural network model to predict home team is win, draw or lose of match.
 
 ## Analysis features
-### 
+### Team pass network
 <img alt="Layered API" src="static/img/frequencyOfEvents.jpg" width="345" style="max-width: 345px">
 
+### Decision number of goals from match statistic data
+
+### Team passes of pitch
+
+### Pass and shot relationship
+
+### Heat map
+
+### Goal action
+
+## Match prediction
 
 ## Setup
 ### 1. Install Requirements
