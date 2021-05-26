@@ -11,7 +11,7 @@ Network Science has been applied in soccer to evaluate performance and team orga
 <img alt="Pass network" src="static/img/passnetwork.jpg" width="345" style="max-width: 345px">
 
 ### Decision number of goals from match statistic data
-To used statistic data of a match, such as number of pass, shot, attact ..., buill a decision tree to predict and find features to affect a match can not have more that one goals. <a id="raw-url" href="static/img/tree.jpg">Download Tree</a>
+To used statistic data of a match, such as number of pass, shot, attact ..., buill a decision tree to predict and find features to affect a match can not have more that one goals. <a id="raw-url" href="static/img/tree.jpg" download="tree.jpg">Download Tree</a>
 
 <img alt="tree" src="static/img/tree.jpg" width="345" style="max-width: 345px">
 
