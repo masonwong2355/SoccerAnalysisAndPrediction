@@ -25,8 +25,17 @@ plot frequency of pass event in soccer pitch to find a team attack pattern.
 
 ### Pass and shot relationship
 Used linear regression to find the relationship between shot and pass events in different team.
-
-<img alt="tree" src="static/img/ShotsPassesWithFit_Real Madrid.jpg" width="345" style="max-width: 345px"> <img alt="tree" src="static/img/ShotsPassesWithFit_Real Sociedad.jpg" width="345" style="max-width: 345px">
+<p>
+    <img alt="tree" src="static/img/ShotsPassesWithFit_Real Madrid.jpg" width="345" style="max-width: 345px">
+    <img src="path_to_image" alt>
+    <em>image_caption</em>
+</p>
+<p>
+    <img alt="tree" src="static/img/ShotsPassesWithFit_Real Madrid.jpg" width="345" style="max-width: 345px">
+    <img src="path_to_image" alt>
+    <em>image_caption</em>
+</p>
+ <img alt="tree" src="static/img/ShotsPassesWithFit_Real Sociedad.jpg" width="345" style="max-width: 345px">
 
 ### Heat map
 Plot heat map for player movement of football pitch.
