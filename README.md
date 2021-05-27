@@ -43,6 +43,8 @@ Plot ten actions before goal to evaluation the action value.
 ## Match prediction
 Scripping web data from [Sqfifa](https://sofifa.com/), that evaluate players value scole in different fields, and [FBREF](https://fbref.com/en/comps/9/Premier-League-Stats) to collect Premier League match and lineup in 2016-2021. Editor used [neural network models of SKlearn](https://scikit-learn.org/stable/modules/neural_networks_supervised.html) to train prediction model.
 
+<img alt="prediction" src="static/img/prediction.PNG">
+
 
 ## Setup
 ### 1. Install Requirements
