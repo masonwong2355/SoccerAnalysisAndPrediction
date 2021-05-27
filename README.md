@@ -30,12 +30,6 @@ Used linear regression to find the relationship between shot and pass events in 
 | :---: | :---: | :---: |
 | Relationship | <img alt="tree" src="static/img/ShotsPassesWithFit_Real Madrid.jpg" width="345" style="max-width: 345px"> | <img alt="tree" src="static/img/ShotsPassesWithFit_Real Sociedad.jpg" width="345" style="max-width: 345px"> |
 
-Team | Real Madrid | Real Sociedad
-Relationship | <img alt="tree" src="static/img/ShotsPassesWithFit_Real Madrid.jpg" width="345" style="max-width: 345px"> | <img alt="tree" src="static/img/ShotsPassesWithFit_Real Sociedad.jpg" width="345" style="max-width: 345px">
-
-
- <img alt="tree" src="static/img/ShotsPassesWithFit_Real Sociedad.jpg" width="345" style="max-width: 345px">
-
 ### Heat map
 Plot heat map for player movement of football pitch.
 
