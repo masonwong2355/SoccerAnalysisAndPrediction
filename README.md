@@ -12,16 +12,15 @@ Network Science has been applied in soccer to evaluate performance and team orga
 <img alt="Pass network" src="static/img/passnetwork.PNG">
 
 ### Decision number of goals from match statistic data
-To used statistic data of a match, such as number of pass, shot, attact ..., buill a decision tree to predict and find features to affect a match can not have more that one goals. <a id="raw-url" href="static/img/tree.jpg" download="tree.jpg">Download Tree</a>
+To used statistic data of a match, such as number of pass, shot, attact ..., buill a decision tree to predict and find features to affect a match can not have more that one goals. <a id="raw-url" href="static/img/tree.jpg" download="tree.jpg" height="400px">Download Tree</a>
 
 <img alt="tree" src="static/img/tree.jpg">
-#width="345" style="max-width: 345px"
 
 ### Team passes of pitch
 plot frequency of pass event in soccer pitch to find a team attack pattern.
 
-<img alt="tree" src="static/img/PassHeatBarcelona.jpg" width="500" style="max-width: 500px"> <img alt="tree" src="static/img/PassHeatReal Madrid.jpg" width="500" style="max-width: 500px">
-<img alt="tree" src="static/img/PassHeatEibar.jpg" width="500" style="max-width: 500px"> <img alt="tree" src="static/img/PassHeatReal Sociedad.jpg" width="500" style="max-width: 500px"> 
+<img alt="tree" src="static/img/PassHeatBarcelona.jpg" width="345" style="max-width: 345px"> <img alt="tree" src="static/img/PassHeatReal Madrid.jpg" width="345" style="max-width: 345px">
+<img alt="tree" src="static/img/PassHeatEibar.jpg" width="345" style="max-width: 345px"> <img alt="tree" src="static/img/PassHeatReal Sociedad.jpg" width="345" style="max-width: 345px"> 
 
 ### Pass and shot relationship
 Used linear regression to find the relationship between shot and pass events in different team.
