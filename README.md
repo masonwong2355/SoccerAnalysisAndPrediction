@@ -20,22 +20,15 @@ To used statistic data of a match, such as number of pass, shot, attact ..., bui
 ### Team passes of pitch
 plot frequency of pass event in soccer pitch to find a team attack pattern.
 
-<img alt="tree" src="static/img/PassHeatBarcelona.jpg" width="345" style="max-width: 345px"> <img alt="tree" src="static/img/PassHeatReal Madrid.jpg" width="345" style="max-width: 345px">
-<img alt="tree" src="static/img/PassHeatEibar.jpg" width="345" style="max-width: 345px"> <img alt="tree" src="static/img/PassHeatReal Sociedad.jpg" width="345" style="max-width: 345px"> 
+<img alt="tree" src="static/img/PassHeatBarcelona.jpg" width="500" style="max-width: 500px"> <img alt="tree" src="static/img/PassHeatReal Madrid.jpg" width="500" style="max-width: 500px">
+<img alt="tree" src="static/img/PassHeatEibar.jpg" width="500" style="max-width: 500px"> <img alt="tree" src="static/img/PassHeatReal Sociedad.jpg" width="500" style="max-width: 500px"> 
 
 ### Pass and shot relationship
 Used linear regression to find the relationship between shot and pass events in different team.
-<p>
-    <img alt="tree" src="static/img/ShotsPassesWithFit_Real Madrid.jpg" width="345" style="max-width: 345px">
-</p>
-<p>
-    <em>image_caption</em>
-</p>
-| ![static/img/ShotsPassesWithFit_Real Madrid.jpg]| 
-|:--:| 
-| *Space* |
 
-****
+Team | Real Madrid | Real Sociedad
+Relationship | <img alt="tree" src="static/img/ShotsPassesWithFit_Real Madrid.jpg" width="345" style="max-width: 345px"> | <img alt="tree" src="static/img/ShotsPassesWithFit_Real Sociedad.jpg" width="345" style="max-width: 345px">
+
 
  <img alt="tree" src="static/img/ShotsPassesWithFit_Real Sociedad.jpg" width="345" style="max-width: 345px">
 
