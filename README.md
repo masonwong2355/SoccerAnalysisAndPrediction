@@ -31,6 +31,11 @@ Used linear regression to find the relationship between shot and pass events in 
 <p>
     <em>image_caption</em>
 </p>
+| ![static/img/ShotsPassesWithFit_Real Madrid.jpg]| 
+|:--:| 
+| *Space* |
+
+****
 
  <img alt="tree" src="static/img/ShotsPassesWithFit_Real Sociedad.jpg" width="345" style="max-width: 345px">
 
