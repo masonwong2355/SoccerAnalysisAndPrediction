@@ -5,6 +5,21 @@ Data analysis of competition includes basic statistic, which are player, match e
 
 User can input formation and lineups of team as feature into neural network model to predict home team is win, draw or lose of match.
 
+## Setup
+### 1. Install Requirements
+run `pip install -r requirements.txt` to install require library 
+
+### 2. Dowload Require data
+create **StatsBomb** folder in `./static/data/` and dowload [StatsBomb](https://github.com/statsbomb/open-data) open data place to there
+create another folder call **events** in `./static/data/` and download [Wyscout](https://figshare.com/articles/dataset/Events/7770599?backTo=/collections/Soccer_match_event_dataset/4415000) open data and place to there
+
+### 3.Data preparation
+Run **convertData.ipynb** in `./public-notebooks/socceraction` to convert data to hierarchical data format 
+
+### 4.Running
+input `python manage.py runserver` in terminal running project in localhost e.g. `http://127.0.0.1:8000/soccerAnalysisAndPrediction/` to Main page
+
+
 ## Analysis features
 ### Team pass network
 Network Science has been applied in soccer to evaluate performance and team organization. It can help coath to deiges stranger and trainning for player.
@@ -44,18 +59,3 @@ Plot ten actions before goal to evaluation the action value.
 Scripping web data from [Sqfifa](https://sofifa.com/), that evaluate players value scole in different fields, and [FBREF](https://fbref.com/en/comps/9/Premier-League-Stats) to collect Premier League match and lineup in 2016-2021. Editor used [neural network models of SKlearn](https://scikit-learn.org/stable/modules/neural_networks_supervised.html) to train prediction model.
 
 <img alt="prediction" src="static/img/prediction.PNG">
-
-
-## Setup
-### 1. Install Requirements
-run `pip install -r requirements.txt` to install require library 
-
-### 2. Dowload Require data
-create **StatsBomb** folder in `./static/data/` and dowload [StatsBomb](https://github.com/statsbomb/open-data) open data place to there
-create another folder call **events** in `./static/data/` and download [Wyscout](https://figshare.com/articles/dataset/Events/7770599?backTo=/collections/Soccer_match_event_dataset/4415000) open data and place to there
-
-### 3.Data preparation
-Run **convertData.ipynb** in `./public-notebooks/socceraction` to convert data to hierarchical data format 
-
-### 4.Running
-input `python manage.py runserver` in terminal running project in localhost e.g. `http://127.0.0.1:8000/soccerAnalysisAndPrediction/` to Main page
